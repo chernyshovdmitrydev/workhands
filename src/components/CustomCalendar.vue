@@ -61,8 +61,9 @@ export default {
       this.selected.year = this.current.year;
       this.selected.month = this.current.month;
       this.selected.day = day;
-      //возвращаю дату по клику
-      return `${this.selected.yaer}-${this.selected.month}-${this.selected.day}`;
+
+      const date = `${this.selected.year}-${this.selected.month}-${this.selected.day}`;
+      this.$emit('dateSelected', date)
     },
   },
   created() {

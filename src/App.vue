@@ -7,6 +7,7 @@ export default {
   },
   data() {
     return {
+      selectedDate: null,
       selectedLanguage: appLang.selectedLang,
     };
   },
@@ -14,12 +15,16 @@ export default {
     handleChangeLang() {
       appLang.changeLang(this.selectedLanguage);
     },
+    handleDateSelected(date) {
+      this.selectedDate = date;
+    },
   },
 };
 </script>
 
 <template>
-  <CustomCalendar initialDate="2024-1-11" />
+  {{ selectedDate }}
+  <CustomCalendar initialDate="2024-1-11" @dateSelected="handleDateSelected" />
   <select v-model="selectedLanguage" @change="handleChangeLang">
     <option value="ru">русский</option>
     <option value="en">english</option>
@@ -31,6 +36,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 100vh;
   background-color: gainsboro;
 }
